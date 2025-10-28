@@ -20,7 +20,21 @@ const HeroBanner: React.FC = () => {
       <div className={styles.image}>
           {/* Здесь будет изображение */}
           <img src="images/mainBanner.png" alt="" />
+      </div>
+      <div className={styles.partners}>
+        <div className={styles.title}>
+          <h3>
+            Партнеры и заказчики
+          </h3>
         </div>
+        <div className={styles.list}>
+          {[...Array(9)].map((_, idx) => (
+            <div className={styles.partner} key={idx}>
+              <img src={`images/partners/partner_${idx + 1}.png`} alt="" />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
