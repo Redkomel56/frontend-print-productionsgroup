@@ -37,6 +37,6 @@ const HeroBanner: React.FC = () => {
       </div>
     </section>
   );
-};
+}; 
 
 export default HeroBanner; 
