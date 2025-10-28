@@ -1,0 +1,112 @@
+.requirementsContent {
+  background-color: white;
+  padding: 4rem 80px;
+  color: black;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  margin: 0;
+  line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: black;
+  margin: 0;
+}
+
+.recommendations {
+  display: flex;
+  gap: 2rem;
+}
+
+.recommendation {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recommendationTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: black;
+  margin: 0;
+}
+
+.recommendationContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recommendationLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+
+.recommendationText {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+}
+
+.rightColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 500px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .requirementsContent {
+    padding: 2rem 1rem;
+  }
+  
+  .imageContainer {
+    max-width: 100%;
+  }
+} 

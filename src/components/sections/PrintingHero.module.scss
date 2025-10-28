@@ -1,0 +1,83 @@
+.printingHero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    margin-top: 196px;
+  }
+  
+  .backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('/images/printingExample.png') center/cover;
+    z-index: 1;
+  }
+  
+  .overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .orderButton {
+    padding: 1rem 2.5rem;
+    background-color: #2d5a2d; // Темно-зеленый цвет
+    color: white;
+    border: 2px solid #4a7c4a; // Светло-зеленая рамка
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: #4a7c4a;
+      border-color: #5a8c5a;
+    }
+  }
+  
+  // Адаптивность для мобильных устройств
+  @media (max-width: 768px) {
+    .printingHero {
+      height: 500px;
+    }
+    
+    .content {
+      padding: 0 1rem;
+    }
+  }

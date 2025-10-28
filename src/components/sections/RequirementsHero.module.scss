@@ -1,0 +1,65 @@
+.requirementsHero {
+  margin-top: 196px;
+  background-color: white;
+  padding: 112px 80px 4rem 80px;
+  color: black;
+  text-align: left;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.container::before {
+  top: -2rem;
+}
+
+.container::after {
+  bottom: -2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 4px;
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 400;
+  color: black;
+  margin: 0;
+  line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: black;
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .requirementsHero {
+    padding: 2rem 1rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+} 

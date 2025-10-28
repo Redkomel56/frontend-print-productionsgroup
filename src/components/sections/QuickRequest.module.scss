@@ -1,0 +1,121 @@
+.quickRequest {
+  background-color: white;
+  padding: 4rem 80px;
+  color: black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  margin: 0;
+  line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: black;
+  margin: 0;
+}
+
+.rightColumn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+.emailInputContainer{
+    display: flex;
+}
+
+.emailInput {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: black;
+  background-color: white;
+  
+  &::placeholder {
+    color: #999;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: #333;
+  }
+}
+
+.submitButton {
+  padding: 1rem 2rem;
+  background: transparent;
+  color: black;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+  align-self: flex-start;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #666;
+  margin: 0;
+  text-align: left;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .quickRequest {
+    padding: 2rem 1rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+  
+  .form {
+    max-width: 100%;
+  }
+} 

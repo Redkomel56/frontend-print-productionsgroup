@@ -1,0 +1,81 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+node_modules/
+dist
+dist/
+dist-ssr
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS
+__MACOSX/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+build
+build/
+out
+out/
+
+# Testing
+coverage
+coverage/
+.nyc_output
+
+# Temporary files
+*.tmp
+*.temp
+.cache
+
+# Docker
+*.md
+!README.md
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PWA
+**/public/sw.js
+**/public/workbox-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+
+# SSL certificates (для letsencrypt)
+letsencrypt/*.pem
+letsencrypt/*.key
+letsencrypt/*.crt
+
+# TypeScript
+*.tsbuildinfo
+

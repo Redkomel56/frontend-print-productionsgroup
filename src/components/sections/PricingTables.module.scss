@@ -1,0 +1,150 @@
+.pricingTables {
+    background-color: white;
+    padding: 4rem 80px;
+    color: black;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: black;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: black;
+    margin: 0;
+  }
+  
+  .tablesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .tableSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .tableTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    margin: 0;
+  }
+  
+  .table {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .tableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    background-color: #f5f5f5;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .headerCell {
+    padding: 1rem;
+    font-weight: 600;
+    color: black;
+    border-right: 1px solid #e0e0e0;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  .tableBody {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-bottom: 1px solid #e0e0e0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:nth-child(even) {
+      background-color: #fafafa;
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .cell {
+    padding: 1rem;
+    color: black;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:first-child {
+      justify-content: flex-start;
+    }
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      justify-content: center;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  // Адаптивность для мобильных устройств
+  @media (max-width: 768px) {
+    .pricingTables {
+      padding: 2rem 1rem;
+    }
+    
+    .tablesContainer {
+      gap: 2rem;
+    }
+  }

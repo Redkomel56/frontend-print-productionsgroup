@@ -1,0 +1,130 @@
+.ourHistory {
+    // background-color: #1a1a1a; // Темно-серый фон
+    color: black;
+    padding: 4rem 0;
+    min-height: 600px;
+    padding: 112px 80px;
+    background-color: white;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  
+  .leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .qualityLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 0.05em;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: black;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: black;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+  
+  .learnButton {
+    padding: 0.75rem 2rem;
+    border: 1px solid black;
+    background: transparent;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+  
+  
+  .imageSection {
+    width: 100%;
+    aspect-ratio: 4/2; // Соотношение сторон 4:3
+    overflow: hidden;
+  }
+  
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    background: url('/images/aboutBanner.png') center/cover;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  
+  // Адаптивность для мобильных устройств
+  @media (max-width: 768px) {
+    .ourHistory {
+      padding: 2rem 0;
+    }
+    
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .imageSection {
+      aspect-ratio: 4/3; // Сохраняем соотношение сторон на мобильных
+    }
+  }
