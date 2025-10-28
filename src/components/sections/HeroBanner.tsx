@@ -19,7 +19,7 @@ const HeroBanner: React.FC = () => {
       </div>
       <div className={styles.image}>
           {/* Здесь будет изображение */}
-          <img src="images/mainBanner.png" alt="" srcset="" />
+          <img src="images/mainBanner.png" alt="" />
         </div>
     </section>
   );
