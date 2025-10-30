@@ -6,6 +6,9 @@
   position: relative;
   overflow: hidden;
   margin-top: 192px;
+  @media (max-width: 1024px) {
+    margin-top: 140px;
+  }
 }
 
 .container {
@@ -77,17 +80,26 @@
     }
   }
   .list {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     position: relative;
     z-index: 2;
-    gap: 2rem;
-    padding: 16px 32px;
+    width: 80vw; // 80% от ширины страницы (баннера)
+    max-width: 100vw;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 16px 0;
     border-radius: 4px;
     background-color: white;
     box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.4);
+
+    .marqueeTrack {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 32px;
+      animation: marquee-scroll 25s linear infinite;
+      will-change: transform;
+    }
     .partner {
       display: flex;
       align-items: center;
@@ -97,6 +109,15 @@
         transform: scale(1.2);
       }
     }
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 .actions {

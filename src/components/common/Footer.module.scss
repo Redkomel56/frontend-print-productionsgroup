@@ -8,6 +8,16 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px;
+
+  // Планшеты
+  @media (max-width: 1024px) {
+    padding: 48px 40px;
+  }
+
+  // Мобильные
+  @media (max-width: 576px) {
+    padding: 32px 20px;
+  }
 }
 
 .topSection {
@@ -37,11 +47,21 @@
 .columns {
   display: flex;
   gap: 3rem;
-  
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 2rem;
+
+  // Планшеты: сетка 3 колонки
+  @media (max-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
   }
+
+  // Планшеты: сетка 2 колонки
+  @media (max-width: 524px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+
 }
 
 .column {
@@ -61,13 +81,24 @@
     
     li {
       margin-bottom: 0.5rem;
-      
+
+      @media (max-width: 576px) {
+        margin-bottom: 0.75rem;
+      }
+
       a {
         color: #666;
         text-decoration: none;
         font-size: 0.9rem;
         transition: color 0.3s ease;
-        
+
+        @media (max-width: 1024px) {
+          font-size: 0.95rem;
+        }
+        @media (max-width: 576px) {
+          font-size: 1rem; // удобнее тапать на мобильных
+        }
+
         &:hover {
           color: #333;
         }
@@ -130,9 +161,22 @@
   
   a {
     transition: transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     
     &:hover {
       transform: scale(1.1);
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+
+      @media (max-width: 576px) {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 } 

@@ -1,44 +1,34 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './MapSection.module.scss';
+import { loadYmaps } from '../../utils/loadYmaps';
 
 const MapSection: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Загружаем скрипт Яндекс Карт
-    const script = document.createElement('script');
-    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU';
-    script.async = true;
-    
-    script.onload = () => {
-      // @ts-ignore
-      window.ymaps.ready(() => {
-        if (mapRef.current) {
-          // @ts-ignore
-          const map = new window.ymaps.Map(mapRef.current, {
-            center: [55.7558, 37.6176], // Москва
-            zoom: 12,
-            controls: ['zoomControl', 'fullscreenControl']
-          });
+    const apiKey = import.meta.env.VITE_YMAPS_API_KEY as string;
+    console.info('Инициализация карты. Проверка наличия ключа...');
+    loadYmaps(apiKey, 'ru_RU')
+      .then((ymaps) => {
+        if (!mapRef.current) return;
+        console.info('Создаю экземпляр карты...');
+        const map = new ymaps.Map(mapRef.current, {
+          center: [55.7558, 37.6176], // Москва
+          zoom: 12,
+          controls: ['zoomControl', 'fullscreenControl']
+        });
 
-          // Добавляем метку офиса
-          // @ts-ignore
-          const placemark = new window.ymaps.Placemark([55.7558, 37.6176], {
-            balloonContent: 'Офис Print Production Group<br/>Москва, ул. Примерная, д. 123'
-          }, {
-            preset: 'islands#redDotIcon'
-          });
+        const placemark = new ymaps.Placemark([55.7558, 37.6176], {
+          balloonContent: 'Офис Print Production Group<br/>Москва, ул. Примерная, д. 123'
+        }, {
+          preset: 'islands#redDotIcon'
+        });
 
-          map.geoObjects.add(placemark);
-        }
+        map.geoObjects.add(placemark);
+      })
+      .catch((err) => {
+        console.error('Не удалось загрузить Яндекс Карты:', err?.message || err);
       });
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
   }, []);
   return (
     <section className={styles.mapSection}>

@@ -398,4 +398,53 @@ export const AdvanatagesIcon: React.FC<IconProps> = ({
 <path fill-rule="evenodd" clip-rule="evenodd" d="M41.46 14.5598L41.18 14.0598C40.8188 13.4552 40.3094 12.9527 39.7 12.5998L26.28 4.85982C25.6724 4.50732 24.9826 4.32106 24.28 4.31982H23.7C22.9974 4.32106 22.3076 4.50732 21.7 4.85982L8.28 12.6198C7.67394 12.9703 7.17052 13.4738 6.82 14.0798L6.54 14.5798C6.1875 15.1875 6.00124 15.8773 6 16.5798V32.0798C6.00124 32.7824 6.1875 33.4722 6.54 34.0798L6.82 34.5798C7.17958 35.1788 7.68098 35.6802 8.28 36.0398L21.72 43.7798C22.3246 44.1396 23.0164 44.3264 23.72 44.3198H24.28C24.9826 44.3186 25.6724 44.1324 26.28 43.7798L39.7 36.0198C40.312 35.6772 40.8174 35.1718 41.16 34.5598L41.46 34.0598C41.8082 33.4504 41.9942 32.7618 42 32.0598V16.5598C41.9988 15.8573 41.8126 15.1675 41.46 14.5598ZM23.7 8.31982H24.28L36 15.0798L24 21.9998L12 15.0798L23.7 8.31982ZM26 39.3198L37.7 32.5598L38 32.0598V18.5398L26 25.4798V39.3198Z" fill="black"/>
 </svg>
 
+);
+
+/**
+ * Иконка бургер-меню
+ */
+export const BurgerIcon: React.FC<IconProps> = ({ 
+  size = 24, 
+  color = 'currentColor', 
+  className 
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+/**
+ * Иконка крестика (закрыть)
+ */
+export const CloseIcon: React.FC<IconProps> = ({ 
+  size = 24, 
+  color = 'currentColor', 
+  className 
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
 ); 
