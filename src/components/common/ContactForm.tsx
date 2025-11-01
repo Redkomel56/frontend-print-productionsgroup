@@ -61,7 +61,7 @@ const ContactForm: React.FC = () => {
               'Свяжитесь с нами'
             )}
           </h2>
-          <AnimatedContent distance={100} direction="vertical" duration={0.8} ease="power3.out" initialOpacity={0.2} animateOpacity threshold={0.1}>
+          <AnimatedContent distance={100} direction="vertical" duration={1.8} ease="power3.out" initialOpacity={0.2} animateOpacity threshold={0.2}>
             <p className={styles.subtitle}>
               Заполните форму, и мы свяжемся с вами.
             </p>
@@ -71,7 +71,7 @@ const ContactForm: React.FC = () => {
           <div className={styles.formContent}>
             <div className={styles.mainFields}>
               <div className={styles.topRow}>
-                <AnimatedContent distance={80} direction="horizontal" duration={0.6} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+                <AnimatedContent distance={80} direction="horizontal" duration={1.6} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                   <div className={styles.formGroup}>
                     <label htmlFor="name">Имя</label>
                     <input
@@ -84,7 +84,7 @@ const ContactForm: React.FC = () => {
                     />
                   </div>
                 </AnimatedContent>
-                <AnimatedContent distance={80} direction="vertical" duration={0.65} delay={0.05} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+                <AnimatedContent distance={80} direction="vertical" duration={1.65} delay={0.05} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                   <div className={styles.formGroup}>
                     <label htmlFor="phone">Номер телефона</label>
                     <input
@@ -97,7 +97,7 @@ const ContactForm: React.FC = () => {
                     />
                   </div>
                 </AnimatedContent>
-                <AnimatedContent distance={80} direction="horizontal" reverse duration={0.7} delay={0.1} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+                <AnimatedContent distance={80} direction="horizontal" reverse duration={1.7} delay={0.1} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                   <div className={styles.formGroup}>
                     <label htmlFor="email">Электронная почта</label>
                     <input
@@ -111,7 +111,7 @@ const ContactForm: React.FC = () => {
                   </div>
                 </AnimatedContent>
               </div>
-              <AnimatedContent distance={100} direction="vertical" duration={0.8} delay={0.1} ease="power3.out" initialOpacity={0.15} animateOpacity threshold={0.1}>
+              <AnimatedContent distance={100} direction="vertical" duration={1.8} delay={0.1} ease="power3.out" initialOpacity={0.15} animateOpacity threshold={0.2}>
                 <div className={styles.formGroup}>
                   <label htmlFor="message">Сообщение</label>
                   <textarea
@@ -126,7 +126,7 @@ const ContactForm: React.FC = () => {
               </AnimatedContent>
             </div>
             <div className={styles.sideSection}>
-              <AnimatedContent distance={80} direction="horizontal" duration={0.6} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+              <AnimatedContent distance={80} direction="horizontal" duration={1.6} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                 <div className={styles.formGroup}>
                   <label htmlFor="file">Ваш макет</label>
                   <input
@@ -141,7 +141,7 @@ const ContactForm: React.FC = () => {
                   </label>
                 </div>
               </AnimatedContent>
-              <AnimatedContent distance={80} direction="vertical" duration={0.65} delay={0.05} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+              <AnimatedContent distance={80} direction="vertical" duration={1.65} delay={0.05} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                 <div className={styles.consentGroup}>
                   <label className={styles.checkboxLabel}>
                     <input
@@ -159,7 +159,7 @@ const ContactForm: React.FC = () => {
                   </label>
                 </div>
               </AnimatedContent>
-              <AnimatedContent distance={80} direction="horizontal" reverse duration={0.7} delay={0.1} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+                <AnimatedContent distance={80} direction="horizontal" reverse duration={1.7} delay={0.1} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.2}>
                 <button type="submit" className={styles.submitButton}>
                   Отправить
                 </button>

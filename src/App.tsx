@@ -18,10 +18,13 @@ import ScrollToTop from './components/common/ScrollToTop';
 const App: React.FC = () => {
   const location = useLocation();
   
-  // Список валидных маршрутов
+  // Список валидных маршрутов (статичные страницы)
   const validRoutes = ['/', '/about', '/requirements', '/contacts', '/services', '/printing'];
-  const isNotFoundPage = !validRoutes.includes(location.pathname) && 
-                        !location.pathname.startsWith('/services/');
+  const isServicePage = location.pathname.startsWith('/services/') || 
+                        (location.pathname !== '/' && 
+                         !validRoutes.includes(location.pathname) && 
+                         location.pathname !== '/printing');
+  const isNotFoundPage = !validRoutes.includes(location.pathname) && !isServicePage;
 
   return (
     <div>
@@ -35,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/:id" element={<ServiceDetail />} />
           <Route path="/printing" element={<Printing />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

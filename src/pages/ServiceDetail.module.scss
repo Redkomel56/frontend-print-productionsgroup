@@ -1,0 +1,219 @@
+.servicePage {
+  background-color: white;
+  color: black;
+  padding: 4rem 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f2f2f2;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.block {
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  margin-bottom: 2rem;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.5rem;
+    li {
+      line-height: 1.5;
+    }
+  }
+}
+
+.infoImageWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.infoImage {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f2f2f2;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.cardsGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.cardIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.cardText {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.stepsList {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stepItem {
+  padding: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.stepIcon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .servicePage {
+    padding: 2rem 1rem;
+  }
+}

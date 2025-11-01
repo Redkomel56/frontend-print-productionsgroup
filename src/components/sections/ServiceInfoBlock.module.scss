@@ -1,29 +1,47 @@
-.professionalPrinting {
+.serviceInfoBlock {
     background-color: white;
-    padding: 4rem 80px;
     color: black;
   }
   
   .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 4rem;
+    box-sizing: border-box;
   }
   
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
+    gap: 2rem;
     min-height: 600px;
+    
+    // Инверсия порядка колонок
+    &.inverse {
+      .leftColumn {
+        order: 2;
+      }
+      
+      .rightColumn {
+        order: 1;
+      }
+    }
     
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
       gap: 2rem;
+      
+      &.inverse {
+        .leftColumn,
+        .rightColumn {
+          order: 0; // Сбрасываем order на мобильных, так как там одна колонка
+        }
+      }
     }
   }
   
   .leftColumn {
     background-color: white;
-    padding: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +115,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
   }
   
   .imageContainer {
@@ -111,18 +128,16 @@
   .image {
     width: 100%;
     height: auto;
-    max-width: 500px;
+    max-width: 600px;
     object-fit: contain;
   }
   
   // Адаптивность для мобильных устройств
   @media (max-width: 768px) {
-    .professionalPrinting {
-      padding: 2rem 1rem;
-    }
     
     .rightColumn {
       padding: 1rem;
       min-height: 300px;
     }
   }
+

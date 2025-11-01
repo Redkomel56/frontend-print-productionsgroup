@@ -1,6 +1,6 @@
 .printingHero {
     position: relative;
-    height: 600px;
+    height: 700px;
     overflow: hidden;
     margin-top: 196px;
   }
@@ -11,8 +11,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('/images/printingExample.png') center/cover;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  // Затемнение через overlay поверх изображения
+  .printingHero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
     z-index: 1;
   }
   

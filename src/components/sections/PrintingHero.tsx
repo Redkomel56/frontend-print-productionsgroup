@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './PrintingHero.module.scss';
 
-const PrintingHero: React.FC = () => {
+const PrintingHero: React.FC<{ src: string; title: string; description: string }> = ({ src, title, description }) => {
   return (
     <section className={styles.printingHero}>
-      <div className={styles.backgroundImage}>
-        {/* Фоновое изображение принтера будет добавлено через CSS */}
-      </div>
+      {src && (
+        <img src={src} alt={title} className={styles.backgroundImage} />
+      )}
       <div className={styles.overlay}>
         <div className={styles.content}>
-          <h1 className={styles.title}>Широкоформатная печать</h1>
+          <h1 className={styles.title}>{title}</h1>
           <p className={styles.description}>
-            Мы предлагаем высококачественную широкоформатную печать для любых ваших нужд и проектов.
+            {description}
           </p>
           <button className={styles.orderButton}>
             Заказать

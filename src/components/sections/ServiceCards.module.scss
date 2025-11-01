@@ -1,0 +1,172 @@
+.serviceCards {
+  background-color: white;
+  padding: 4rem 80px;
+  padding-bottom: 0;
+  color: black;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  margin: 0 0 1.5rem 0;
+  text-align: left;
+  width: 100%;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: black;
+  margin: 0 0 3rem 0;
+  max-width: 80%;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.cardsGrid {
+  display: flex;
+
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 3rem;
+  justify-content: center;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: stretch;
+  }
+}
+
+.cardContainer {
+  
+  width: 100%;
+  height: auto;
+  max-width: 250px;
+  aspect-ratio: 1/1;
+  perspective: 1000px;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+}
+
+.cardFace {
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    padding: 1.5rem;
+  }
+}
+
+.glare {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cardIcon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.cardText {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
+}
+
+.orderButton {
+  padding: 1rem 2.5rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .serviceCards {
+    padding: 2rem 1rem;
+    padding-bottom: 0;
+  }
+}
+
