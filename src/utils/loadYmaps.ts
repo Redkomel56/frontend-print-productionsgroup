@@ -1,8 +1,8 @@
 // ВНИМАНИЕ: Логи на русском согласно правилам пользователя
 
-let ymapsPromise: Promise<typeof window.ymaps> | null = null;
+let ymapsPromise: Promise<NonNullable<typeof window.ymaps>> | null = null;
 
-export function loadYmaps(apiKey: string, lang: string = 'ru_RU'): Promise<typeof window.ymaps> {
+export function loadYmaps(apiKey: string, lang: string = 'ru_RU'): Promise<NonNullable<typeof window.ymaps>> {
   if (typeof window === 'undefined') {
     return Promise.reject(new Error('Загрузка Яндекс Карт невозможна на сервере'));
   }
@@ -11,9 +11,9 @@ export function loadYmaps(apiKey: string, lang: string = 'ru_RU'): Promise<typeo
   if (ymapsPromise) return ymapsPromise;
 
   // Если API уже есть на странице
-  if ((window as any).ymaps && typeof (window as any).ymaps.ready === 'function') {
+  if (window.ymaps && typeof window.ymaps.ready === 'function') {
     console.info('Яндекс Карт API уже инициализирован — переиспользуем.');
-    ymapsPromise = new Promise((resolve) => (window as any).ymaps.ready(() => resolve((window as any).ymaps)));
+    ymapsPromise = new Promise((resolve) => window.ymaps!.ready(() => resolve(window.ymaps!)));
     return ymapsPromise;
   }
 
@@ -27,7 +27,9 @@ export function loadYmaps(apiKey: string, lang: string = 'ru_RU'): Promise<typeo
     const existing = document.querySelector<HTMLScriptElement>('script[data-ymaps="true"]');
     if (existing) {
       // Если скрипт уже добавлен, ждём готовности
-      (window as any).ymaps?.ready?.(() => resolve((window as any).ymaps));
+      if (window.ymaps?.ready) {
+        window.ymaps.ready(() => resolve(window.ymaps!));
+      }
       return;
     }
 
@@ -38,10 +40,10 @@ export function loadYmaps(apiKey: string, lang: string = 'ru_RU'): Promise<typeo
     script.dataset.ymaps = 'true';
 
     script.onload = () => {
-      if ((window as any).ymaps?.ready) {
-        (window as any).ymaps.ready(() => {
+      if (window.ymaps?.ready) {
+        window.ymaps.ready(() => {
           console.info('Яндекс Карт API загружен и готов к использованию.');
-          resolve((window as any).ymaps);
+          resolve(window.ymaps!);
         });
       } else {
         console.error('Скрипт Яндекс Карт загружен, но ymaps недоступен.');
