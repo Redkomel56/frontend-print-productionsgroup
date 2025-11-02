@@ -44,9 +44,9 @@ const ServiceInfoBlock: React.FC<{ src: string; title: string; description: stri
               ))}
             </ul>
             
-            <button className={styles.orderButton}>
+            {/* <button className={styles.orderButton}>
               Сделать заказ
-            </button>
+            </button> */}
           </div>
           
           {/* Правая колонка - черный фон с изображением */}

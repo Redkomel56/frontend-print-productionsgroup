@@ -104,7 +104,6 @@ const ServiceDetail: React.FC = () => {
               return (
                 <React.Fragment key={`hero-${idx}`}>
                   <PrintingHero src={b.image || ''} title={b.title} description={b.description || ''}/>
-                  <QuickRequest />
                 </React.Fragment>
               );
               // return (

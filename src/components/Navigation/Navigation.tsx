@@ -1,11 +1,122 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
 import styles from './Navigation.module.scss';
 import { LogoIcon, TelegramIcon, WhatsappIcon, BurgerIcon, CloseIcon } from '../Icons/Icons';
+import { navigationServices } from '../../data/navigationServices';
 
 const Navigation: React.FC = () => {
   const runningLineRef = useRef<HTMLDivElement>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const location = useLocation();
+
+  // Закрываем dropdown при смене страницы
+  useEffect(() => {
+    setIsServicesDropdownOpen(false);
+  }, [location.pathname]);
+
+  // Закрываем dropdown при клике вне его области
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
+        setIsServicesDropdownOpen(false);
+      }
+    };
+
+    if (isServicesDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isServicesDropdownOpen]);
+
+  // Очистка таймера при размонтировании
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Анимация появления dropdown меню
+  useEffect(() => {
+    const menu = dropdownMenuRef.current;
+    if (!menu) return;
+
+    if (isServicesDropdownOpen) {
+      // Устанавливаем начальное состояние для меню
+      gsap.set(menu, {
+        opacity: 0,
+        y: -20,
+        scale: 0.95
+      });
+
+      // Устанавливаем начальное состояние для элементов внутри
+      const items = menu.querySelectorAll(`.${styles.dropdownItem}`);
+      gsap.set(items, {
+        opacity: 0,
+        x: -20
+      });
+
+      // Анимируем появление меню
+      gsap.to(menu, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+        onComplete: () => {
+          // После появления меню, анимируем элементы
+          gsap.to(items, {
+            opacity: 1,
+            x: 0,
+            duration: 0.25,
+            ease: 'power2.out',
+            stagger: 0.02 // Небольшая задержка между элементами
+          });
+        }
+      });
+    } else {
+      // Анимация исчезновения
+      const items = menu.querySelectorAll(`.${styles.dropdownItem}`);
+      gsap.to([menu, ...items], {
+        opacity: 0,
+        y: -10,
+        scale: 0.98,
+        duration: 0.2,
+        ease: 'power2.in',
+        onComplete: () => {
+          // Сбрасываем стили после анимации
+          gsap.set([menu, ...items], { clearProps: 'all' });
+        }
+      });
+    }
+  }, [isServicesDropdownOpen]);
+
+  // Функции для обработки hover с задержкой
+  const handleMouseEnter = () => {
+    // Отменяем закрытие, если оно было запланировано
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsServicesDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    // Устанавливаем задержку перед закрытием
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsServicesDropdownOpen(false);
+      closeTimeoutRef.current = null;
+    }, 200); // 200ms задержка для удобного перехода курсора
+  };
 
   // Блокировка скролла при открытом меню
   useEffect(() => {
@@ -102,8 +213,54 @@ const Navigation: React.FC = () => {
                 <div className={styles.navItem}>
                   <Link to="/prices" className={styles.navLink}>Цены</Link>
                 </div>
-                <div className={styles.navItem}>
-                  <Link to="/services" className={styles.navLink}>Услуги</Link>
+                <div 
+                  className={styles.navItem}
+                  ref={servicesDropdownRef}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link 
+                    to="/services" 
+                    className={styles.navLink}
+                    onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                  >
+                    Услуги
+                    <span className={styles.dropdownArrow}>▼</span>
+                  </Link>
+                  {isServicesDropdownOpen && (
+                    <div className={styles.dropdownMenu} ref={dropdownMenuRef}>
+                      <div className={styles.dropdownGrid}>
+                        {navigationServices.map((service) => (
+                          <Link
+                            key={service.id}
+                            to={service.link}
+                            className={styles.dropdownItem}
+                            onClick={() => setIsServicesDropdownOpen(false)}
+                          >
+                            <img 
+                              src={`/images/${service.icon}`} 
+                              alt={service.title}
+                              className={styles.dropdownItemIcon}
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                if (target.src.includes('/images/')) {
+                                  target.src = `/${service.icon}`;
+                                }
+                              }}
+                            />
+                            <span className={styles.dropdownItemTitle}>{service.title}</span>
+                          </Link>
+                        ))}
+                      </div>
+                      <Link
+                        to="/services"
+                        className={styles.dropdownItemAll}
+                        onClick={() => setIsServicesDropdownOpen(false)}
+                      >
+                        Все услуги →
+                      </Link>
+                    </div>
+                  )}
                 </div>
                 <div className={styles.navItem}>
                   <Link to="/projects" className={styles.navLink}>Наши проекты</Link>
@@ -206,13 +363,55 @@ const Navigation: React.FC = () => {
             >
               Главная страница
             </Link>
-            <Link 
-              to="/services" 
-              className={styles.mobileNavLink}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Услуги
-            </Link>
+            <div className={styles.mobileNavItem}>
+              <button
+                className={styles.mobileNavLink}
+                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+              >
+                Услуги
+                <span className={styles.dropdownArrow}>▼</span>
+              </button>
+              {isServicesDropdownOpen && (
+                <div className={styles.mobileDropdownMenu}>
+                  <div className={styles.mobileDropdownGrid}>
+                    {navigationServices.map((service) => (
+                      <Link
+                        key={service.id}
+                        to={service.link}
+                        className={styles.mobileDropdownItem}
+                        onClick={() => {
+                          setIsServicesDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <img 
+                          src={`/images/${service.icon}`} 
+                          alt={service.title}
+                          className={styles.mobileDropdownItemIcon}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            if (target.src.includes('/images/')) {
+                              target.src = `/${service.icon}`;
+                            }
+                          }}
+                        />
+                        <span className={styles.mobileDropdownItemTitle}>{service.title}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <Link
+                    to="/services"
+                    className={styles.mobileDropdownItemAll}
+                    onClick={() => {
+                      setIsServicesDropdownOpen(false);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Все услуги →
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link 
               to="/projects" 
               className={styles.mobileNavLink}
