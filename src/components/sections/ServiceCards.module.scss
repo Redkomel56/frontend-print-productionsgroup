@@ -1,12 +1,13 @@
 .serviceCards {
   background-color: white;
-  padding: 4rem 80px;
-  padding-bottom: 0;
   color: black;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
+  padding: 4rem;
+  padding-bottom: 0;
+  box-sizing: border-box;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -41,29 +42,21 @@
 
 .cardsGrid {
   display: flex;
-
   gap: 2rem;
   width: 100%;
   margin-bottom: 3rem;
-  justify-content: center;
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-  }
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 2rem;
-    justify-content: stretch;
   }
 }
 
 .cardContainer {
-  
+  flex: 1;
   width: 100%;
   height: auto;
-  max-width: 250px;
   aspect-ratio: 1/1;
   perspective: 1000px;
   border-radius: 8px;

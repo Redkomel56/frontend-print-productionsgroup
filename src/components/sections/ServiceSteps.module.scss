@@ -1,0 +1,103 @@
+.steps {
+  background-color: white;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.stepsHeader {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.stepsTitle {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.stepsDescription {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: black;
+}
+
+.stepsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 992px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.stepIconWrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.stepIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.stepTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.stepDescription {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: black;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+

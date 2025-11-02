@@ -6,6 +6,7 @@ import PrintingHero from '../components/sections/PrintingHero';
 import QuickRequest from '../components/sections/QuickRequest';
 import ServiceInfoBlock from '../components/sections/ServiceInfoBlock';
 import ServiceCards from '../components/sections/ServiceCards';
+import ServiceSteps from '../components/sections/ServiceSteps';
 
 type HeroBlock = {
   type: 'hero';
@@ -147,24 +148,17 @@ const ServiceDetail: React.FC = () => {
               );
             }
 
-            // case 'steps': {
-            //   const b = block as StepsBlock;
-            //   return (
-            //     <section key={`steps-${idx}`} className={`${styles.block} ${styles.steps}`}>
-            //       <h2>{b.title}</h2>
-            //       {b.description && <p>{b.description}</p>}
-            //       <div className={styles.stepsList}>
-            //         {b.steps.map((s, i) => (
-            //           <div key={i} className={styles.stepItem}>
-            //             {s.icon && <img src={s.icon} alt="step" className={styles.stepIcon} />}
-            //             <h3>{s.title}</h3>
-            //             {s.description && <p>{s.description}</p>}
-            //           </div>
-            //         ))}
-            //       </div>
-            //     </section>
-            //   );
-            // }
+            case 'steps': {
+              const b = block as StepsBlock;
+              return (
+                <ServiceSteps
+                  key={`steps-${idx}`}
+                  title={b.title}
+                  description={b.description}
+                  steps={b.steps}
+                />
+              );
+            }
 
             default:
               return null;
