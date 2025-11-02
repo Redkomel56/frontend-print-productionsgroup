@@ -9,3 +9,6 @@ declare global {
     };
   }
 }
+
+// Делаем файл модулем для правильной работы declare global
+export {};
