@@ -27,7 +27,7 @@ const MapSection: React.FC = () => {
         }
         
         const map = new ymaps.Map(mapRef.current, {
-          center: [55.7558, 37.6176], // Москва
+          center: [55.741906, 37.767070], // Москва
           zoom: 12,
           controls: ['zoomControl', 'fullscreenControl']
         });
@@ -35,7 +35,7 @@ const MapSection: React.FC = () => {
         mapInstanceRef.current = map;
 
         const placemark = new ymaps.Placemark([55.7558, 37.6176], {
-          balloonContent: 'Офис Print Production Group<br/>Москва, ул. Примерная, д. 123'
+          balloonContent: 'Офис Print Production Group<br/>ул. Плеханова, д. 22, корп. 4, пом. 6, кв. 41'
         }, {
           preset: 'islands#redDotIcon'
         });
@@ -97,7 +97,7 @@ const MapSection: React.FC = () => {
                   <div className={styles.details}>
                     <span className={styles.label}>Офис</span>
                     <span className={styles.value}>
-                      Москва, ул. Примерная, д. 123
+                      111123, г. Москва, ул. Плеханова, д. 22, корп. 4, пом. 6, кв. 41
                     </span>
                   </div>
                 </div>
