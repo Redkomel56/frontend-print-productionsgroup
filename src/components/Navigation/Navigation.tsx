@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import styles from './Navigation.module.scss';
 import { LogoIcon, TelegramIcon, WhatsappIcon, BurgerIcon, CloseIcon } from '../Icons/Icons';
@@ -13,28 +13,36 @@ const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Закрываем dropdown при смене страницы
   useEffect(() => {
     setIsServicesDropdownOpen(false);
   }, [location.pathname]);
 
-  // Закрываем dropdown при клике вне его области
+  // Закрываем dropdown при клике вне его области (только для десктопа)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      // Игнорируем клики если открыто мобильное меню
+      if (isMobileMenuOpen) {
+        return;
+      }
+      // Проверяем только для десктопного dropdown
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(target)) {
         setIsServicesDropdownOpen(false);
       }
     };
 
-    if (isServicesDropdownOpen) {
+    // Применяем обработчик только для десктопа (когда мобильное меню закрыто)
+    if (isServicesDropdownOpen && !isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isServicesDropdownOpen]);
+  }, [isServicesDropdownOpen, isMobileMenuOpen]);
 
   // Очистка таймера при размонтировании
   useEffect(() => {
@@ -312,11 +320,15 @@ const Navigation: React.FC = () => {
       {/* Мобильное меню */}
       <div 
         className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={(e) => {
+          // Закрываем меню только если клик был на затемненном фоне, а не на контенте
+          if (e.target === e.currentTarget) {
+            setIsMobileMenuOpen(false);
+          }
+        }}
       >
         <div 
           className={styles.mobileMenuContent}
-          onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.mobileMenuHeader}>
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
@@ -372,7 +384,9 @@ const Navigation: React.FC = () => {
                 <span className={styles.dropdownArrow}>▼</span>
               </button>
               {isServicesDropdownOpen && (
-                <div className={styles.mobileDropdownMenu}>
+                <div 
+                  className={styles.mobileDropdownMenu}
+                >
                   <div className={styles.mobileDropdownGrid}>
                     {navigationServices.map((service) => (
                       <Link
@@ -380,6 +394,7 @@ const Navigation: React.FC = () => {
                         to={service.link}
                         className={styles.mobileDropdownItem}
                         onClick={() => {
+                          // Закрываем меню - Link сам выполнит навигацию
                           setIsServicesDropdownOpen(false);
                           setIsMobileMenuOpen(false);
                         }}
@@ -403,6 +418,7 @@ const Navigation: React.FC = () => {
                     to="/services"
                     className={styles.mobileDropdownItemAll}
                     onClick={() => {
+                      // Закрываем меню - Link сам выполнит навигацию
                       setIsServicesDropdownOpen(false);
                       setIsMobileMenuOpen(false);
                     }}

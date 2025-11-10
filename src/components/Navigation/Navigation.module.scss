@@ -507,6 +507,7 @@
   color: #333;
   transition: background-color 0.2s ease;
   border-radius: 6px;
+  cursor: pointer; // Курсор указатель для кликабельных элементов
   
   &:hover {
     background-color: #e9ecef;
@@ -539,6 +540,7 @@
   margin-top: 0.75rem;
   transition: background-color 0.2s ease;
   border-radius: 6px;
+  cursor: pointer; // Курсор указатель для кликабельных элементов
   
   &:hover {
     background-color: #e9ecef;

@@ -3,6 +3,9 @@
     height: 700px;
     overflow: hidden;
     margin-top: 196px;
+    @media (max-width: 1024px) {
+      margin-top: 140px;
+    }
   }
   
   .backgroundImage {

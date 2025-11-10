@@ -27,29 +27,38 @@ const OurAchievements: React.FC = () => {
         <div className={styles.content}>
           {/* Левая колонка - текст и статистика */}
           <div className={styles.leftColumn}>
-            <span className={styles.statisticsLabel}>Статистика</span>
+            <span className={styles.statisticsLabel}>Результаты</span>
             <h2 className={styles.title}>
-              <span>Наши достижения и</span>
-              <span>ключевые показатели компании</span>
+              <span>Наш результат —</span>
+              <span>это ваша репутация</span>
             </h2>
             
             <p className={styles.description}>
-              Мы гордимся тем, что выполнили более 10,000 заказов за 5 лет работы. 
-              Наша команда обслуживает более 1,000 довольных клиентов.
+              Более 1000 довольных клиентов, более 10 000 реализованных проектов, сотни постоянных партнёров, которые возвращаются к нам снова и снова.
+            </p>
+            <p className={styles.description}>
+              Потому что здесь ценят не только качество, но и отношение, скорость, гибкость и честность.
             </p>
             
             <div className={styles.statistics}>
               <div className={styles.statistic}>
-                <div className={styles.number}>90%</div>
+                <div className={styles.number}>1000+</div>
                 <p className={styles.statisticDescription}>
-                  Клиенты довольны качеством нашей продукции и услуг.
+                  Довольных клиентов
                 </p>
               </div>
               
               <div className={styles.statistic}>
-                <div className={styles.number}>5</div>
+                <div className={styles.number}>10000+</div>
                 <p className={styles.statisticDescription}>
-                  Лет на рынке печатных услуг и рекламы.
+                  Реализованных проектов
+                </p>
+              </div>
+              
+              <div className={styles.statistic}>
+                <div className={styles.number}>6</div>
+                <p className={styles.statisticDescription}>
+                  Лет на рынке с 2019 года
                 </p>
               </div>
             </div>
