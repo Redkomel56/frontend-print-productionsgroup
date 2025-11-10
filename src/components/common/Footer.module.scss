@@ -187,3 +187,29 @@
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+.legalInfo {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  
+  p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+    
+    @media (max-width: 768px) {
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
