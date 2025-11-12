@@ -1,49 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './ProjectsSection.module.scss';
 
+interface Project {
+  id: number;
+  title: string;
+  short_description: string;
+  description: string;
+  image: string;
+  images: string[];
+  category: string;
+}
+
 const ProjectsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const carouselRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
   
-  const projects = [
-    {
-      id: 1,
-      title: 'Заголовок события 1',
-      description: 'Уникальные решения для вашего бизнеса с нашими печатными услугами.',
-      image: '/images/projects/project1.png',
-      category: 'Печать'
-    },
-    {
-      id: 2,
-      title: 'Заголовок события 2',
-      description: 'Качественная печать для ваших рекламных материалов и мероприятий.',
-      image: '/images/projects/project1.png',
-      category: 'Реклама'
-    },
-    {
-      id: 3,
-      title: 'Заголовок события 3',
-      description: 'Создайте уникальную атмосферу с помощью наших интерьерных решений.',
-      image: '/images/projects/project1.png',
-      category: 'Резка'
-    },
-    {
-      id: 4,
-      title: 'Заголовок события 4',
-      description: 'Профессиональная печать для вашего бизнеса и мероприятий.',
-      image: '/images/projects/project1.png',
-      category: 'Печать'
-    },
-    {
-      id: 5,
-      title: 'Заголовок события 5',
-      description: 'Инновационные решения для современного бизнеса.',
-      image: '/images/projects/project1.png',
-      category: 'Реклама'
-    }
-  ];
+  // Загружаем данные проектов из JSON
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const response = await fetch('/data/projects.json');
+        if (!response.ok) {
+          console.error('Не удалось загрузить проекты:', response.status);
+          return;
+        }
+        const data: Project[] = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error('Ошибка загрузки проектов:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProjects();
+  }, []);
 
   // Создаем бесконечный массив проектов
   const infiniteProjects = [...projects, ...projects, ...projects];
@@ -74,6 +69,8 @@ const ProjectsSection: React.FC = () => {
 
   // Автоматическая прокрутка
   useEffect(() => {
+    if (projects.length === 0) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         const newIndex = prevIndex + 1;
@@ -88,12 +85,14 @@ const ProjectsSection: React.FC = () => {
   }, [projects.length]);
 
   const handlePrev = () => {
+    if (projects.length === 0) return;
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = () => {
+    if (projects.length === 0) return;
     setCurrentIndex((prevIndex) => 
       prevIndex === projects.length - 1 ? 0 : prevIndex + 1
     );
@@ -109,6 +108,28 @@ const ProjectsSection: React.FC = () => {
     // fallback: на первом рендере пока рефы не готовы
     return 0;
   })();
+
+  if (loading) {
+    return (
+      <section className={styles.projectsSection}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <div className={styles.titleBlock}>
+              <h2 className={styles.title}>Наши проекты</h2>
+              <p className={styles.subtitle}>
+                Профессиональная печать для вашего бизнеса и мероприятий.
+              </p>
+            </div>
+          </div>
+          <div>Загрузка...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (projects.length === 0) {
+    return null;
+  }
 
   return (
     <section className={styles.projectsSection}>
@@ -155,7 +176,7 @@ const ProjectsSection: React.FC = () => {
                 </div>
                 <div className={styles.content}>
                   <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.description}>{project.description}</p>
+                  <p className={styles.description}>{project.short_description}</p>
                 </div>
               </div>
             ))}

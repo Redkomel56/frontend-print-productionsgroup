@@ -8,7 +8,7 @@ const MapSection: React.FC = () => {
   const mapInstanceRef = useRef<any>(null);
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_YMAPS_API_KEY as string;
+    const apiKey = "cf07a18e-53c2-4bd2-9b0a-0f081d4aa009"
     
     // Если карта уже создана, не создаем её повторно
     if (mapInstanceRef.current) {
@@ -34,7 +34,7 @@ const MapSection: React.FC = () => {
 
         mapInstanceRef.current = map;
 
-        const placemark = new ymaps.Placemark([55.7558, 37.6176], {
+        const placemark = new ymaps.Placemark([55.741906, 37.767070], {
           balloonContent: 'Офис Print Production Group<br/>ул. Плеханова, д. 22, корп. 4, пом. 6, кв. 41'
         }, {
           preset: 'islands#redDotIcon'

@@ -6,6 +6,14 @@
     @media (max-width: 1024px) {
       margin-top: 140px;
     }
+    
+    &.noMargin {
+      margin-top: 0;
+    }
+    
+    &.rounded {
+      border-radius: 16px;
+    }
   }
   
   .backgroundImage {

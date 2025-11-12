@@ -1,0 +1,128 @@
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 1.25rem;
+}
+
+.card {
+  flex: 0 0 calc(25% - 1rem);
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Адаптивные ширины карточек
+@media (max-width: 1200px) {
+  .card {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    flex: 0 0 100%;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  height: 200px;
+}
+
+@media (max-width: 992px) {
+  .imageContainer {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  .imageContainer {
+    height: 160px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0; // Fallback цвет если изображение не загрузится
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1rem;
+  transition: transform 0.3s ease; // Плавная анимация при наведении
+  
+  &:hover {
+    transform: scale(1.05); // Небольшое увеличение при наведении
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &.active {
+    background-color: #333;
+  }
+  
+  &:hover {
+    background-color: #999;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  color: black;
+  &:hover {
+    border-color: #333;
+    background-color: #f8f9fa;
+  }
+}
+

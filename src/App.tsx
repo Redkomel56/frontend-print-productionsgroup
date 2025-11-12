@@ -9,6 +9,7 @@ import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Printing from './pages/Printing';
 import Privacy from './pages/Privacy';
+import Projects from './pages/Projects';
 import NotFound from './pages/NotFound';
 import ProjectsSection from './components/common/ProjectsSection';
 import ContactForm from './components/common/ContactForm';
@@ -20,7 +21,7 @@ const App: React.FC = () => {
   const location = useLocation();
   
   // Список валидных маршрутов (статичные страницы)
-  const validRoutes = ['/', '/about', '/requirements', '/contacts', '/services', '/printing', '/privacy'];
+  const validRoutes = ['/', '/about', '/requirements', '/contacts', '/services', '/printing', '/privacy', '/projects'];
   const isServicePage = location.pathname.startsWith('/services/') || 
                         (location.pathname !== '/' && 
                          !validRoutes.includes(location.pathname) && 
@@ -41,13 +42,14 @@ const App: React.FC = () => {
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/printing" element={<Printing />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/:id" element={<ServiceDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {!isNotFoundPage && (
         <>
-          <ProjectsSection />
+          {location.pathname !== '/projects' && <ProjectsSection />}
           <ContactForm />
           <MapSection />
         </>

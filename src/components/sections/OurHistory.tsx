@@ -29,7 +29,7 @@ const OurHistory: React.FC = () => {
           <div className={styles.leftColumn}>
             <span className={styles.qualityLabel}>О нас</span>
             <h2 className={styles.title}>
-              <span>Print Productions Group</span>
+              <span>Принт Продакшнс Групп</span>
               <span>печать, которой можно гордиться</span>
             </h2>
           </div>

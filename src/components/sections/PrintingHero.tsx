@@ -1,9 +1,15 @@
 import React from 'react';
 import styles from './PrintingHero.module.scss';
 
-const PrintingHero: React.FC<{ src: string; title: string; description: string }> = ({ src, title, description }) => {
+const PrintingHero: React.FC<{ 
+  src: string; 
+  title: string; 
+  description: string;
+  noMargin?: boolean;
+  rounded?: boolean;
+}> = ({ src, title, description, noMargin = false, rounded = false }) => {
   return (
-    <section className={styles.printingHero}>
+    <section className={`${styles.printingHero} ${noMargin ? styles.noMargin : ''} ${rounded ? styles.rounded : ''}`}>
       {src && (
         <img src={src} alt={title} className={styles.backgroundImage} />
       )}

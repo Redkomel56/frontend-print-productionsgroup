@@ -74,12 +74,12 @@ const HeroBanner: React.FC = () => {
         </div>
         <div className={styles.list}>
           <div className={styles.marqueeTrack}>
-            {[...Array(9)].map((_, idx) => (
+            {[...Array(8)].map((_, idx) => (
               <div className={styles.partner} key={`a-${idx}`}>
                 <img src={`images/partners/partner_${idx + 1}.png`} alt="" />
               </div>
             ))}
-            {[...Array(9)].map((_, idx) => (
+            {[...Array(8)].map((_, idx) => (
               <div className={styles.partner} key={`b-${idx}`}>
                 <img src={`images/partners/partner_${idx + 1}.png`} alt="" />
               </div>

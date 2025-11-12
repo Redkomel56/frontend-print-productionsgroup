@@ -1,0 +1,53 @@
+.projectsPage {
+  background-color: white;
+  padding: 112px 2rem 152px;
+  min-height: 100vh;
+  margin-top: 192px;
+  @media (max-width: 1024px) {
+    margin-top: 140px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+

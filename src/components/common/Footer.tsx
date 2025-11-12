@@ -73,7 +73,6 @@ const Footer: React.FC = () => {
             <span>© 2025 Принт Продакшнс Групп. Все права защищены.</span>
             <div className={styles.legalLinks}>
               <Link to="/privacy">Политика Конфиденциальности</Link>
-              <Link to="/terms">Условия Обслуживания</Link>
             </div>
           </div>
           <div className={styles.social}>

@@ -71,7 +71,7 @@ const CooperationSteps: React.FC = () => {
             {steps.map((step, index) => (
               <AnimatedContent
                 key={step.id}
-                distance={250}
+                distance={140}
                 direction={index % 2 === 0 ? 'horizontal' : 'vertical'}
                 reverse={index % 3 === 0}
                 duration={0.5}
