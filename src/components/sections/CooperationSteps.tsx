@@ -61,9 +61,9 @@ const CooperationSteps: React.FC = () => {
             </p>
           </AnimatedContent>
 
-          <AnimatedContent distance={80} direction="horizontal" duration={0.8} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
+          {/* <AnimatedContent distance={80} direction="horizontal" duration={0.8} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
             <button className={styles.ctaButton}>Отправить заявку</button>
-          </AnimatedContent>
+          </AnimatedContent> */}
         </div>
         <div className={styles.timeline}>
           <div className={styles.timelineLine}></div>

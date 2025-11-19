@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LogoIcon, TelegramIcon, WhatsappIcon } from '../Icons/Icons';
+import { navigationServices } from '../../data/navigationServices';
 import styles from './Footer.module.scss';
 
 const Footer: React.FC = () => {
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
               <h3>Страницы</h3>
               <ul>
                 <li><Link to="/services">Услуги</Link></li>
-                <li><Link to="/prices">Цены</Link></li>
+                <li><Link to="/projects">Проекты</Link></li>
                 <li><Link to="/contacts">Контакты</Link></li>
                 <li><Link to="/about">О компании</Link></li>
                 <li><Link to="/requirements">Требования к макетам</Link></li>
@@ -27,40 +28,44 @@ const Footer: React.FC = () => {
             <div className={styles.column}>
               <h3>Услуги</h3>
               <ul>
-                <li><Link to="/services">Интерьерная печать</Link></li>
-                <li><Link to="/services">Интерьерная печать</Link></li>
-                <li><Link to="/services">УФ-печать</Link></li>
-                <li><Link to="/services">Лазерная гравировка</Link></li>
+                {navigationServices.slice(0, 3).map((service) => (
+                  <li key={service.id}>
+                    <Link to={service.link}>{service.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
             
             <div className={styles.column}>
               <h3 className={styles.empty}>empty</h3>
               <ul>
-                <li><Link to="/services">Цифровая печать</Link></li>
-                <li><Link to="/services">Полиграфия</Link></li>
-                <li><Link to="/services">Офсетная печать</Link></li>
-                <li><Link to="/services">Плоттерная резка</Link></li>
+                {navigationServices.slice(3, 6).map((service) => (
+                  <li key={service.id}>
+                    <Link to={service.link}>{service.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
             
             <div className={styles.column}>
               <h3 className={styles.empty}>empty</h3>
               <ul>
-                <li><Link to="/services">Цифровая печать</Link></li>
-                <li><Link to="/services">Полиграфия</Link></li>
-                <li><Link to="/services">Офсетная печать</Link></li>
-                <li><Link to="/services">Плоттерная резка</Link></li>
+                {navigationServices.slice(6, 9).map((service) => (
+                  <li key={service.id}>
+                    <Link to={service.link}>{service.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
             
             <div className={styles.column}>
               <h3 className={styles.empty}>empty</h3>
               <ul>
-                <li><Link to="/services">Цифровая печать</Link></li>
-                <li><Link to="/services">Полиграфия</Link></li>
-                <li><Link to="/services">Офсетная печать</Link></li>
-                <li><Link to="/services">Плоттерная резка</Link></li>
+                {navigationServices.slice(9, 12).map((service) => (
+                  <li key={service.id}>
+                    <Link to={service.link}>{service.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -89,7 +94,7 @@ const Footer: React.FC = () => {
           <p>ИНДИВИДУАЛЬНЫЙ ПРЕДПРИНИМАТЕЛЬ ШОРНИКОВ ДМИТРИЙ ВЛАДИМИРОВИЧ</p>
           <p>ИНН: 211902029386</p>
           <p>ОГРН: 319508100273711</p>
-          <p>Адрес: 141090, РОССИЯ, МОСКОВСКАЯ ОБЛ, Г КОРОЛЕВ, МКР ЮБИЛЕЙНЫЙ, УЛ МАЯКОВСКОГО, Д 4, КВ 242</p>
+          <p>Адрес: 141090, РОССИЯ, МОСКОВСКАЯ ОБЛ, Г КОРОЛЕВ, МКР ЮБИЛЕЙНЫЙ, УЛ МАЯКОВСКОГО, Д 4</p>
         </div>
       </div>
     </footer>

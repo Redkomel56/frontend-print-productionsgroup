@@ -18,7 +18,7 @@ interface ProjectBlockProps {
 
 const ProjectBlock: React.FC<ProjectBlockProps> = ({ project }) => {
   return (
-    <div className={styles.projectBlock}>
+    <div id={`project-${project.id}`} className={styles.projectBlock}>
       <div className={styles.content}>
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.description}>{project.description}</p>

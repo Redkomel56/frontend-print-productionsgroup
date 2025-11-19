@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import AnimatedContent from '../common/AnimatedContent';
 import { useInView } from '../../utils/useInView';
@@ -63,6 +64,28 @@ const ServicesSection: React.FC = () => {
               />
             </AnimatedContent>
           ))}
+          {showAll && (
+            <AnimatedContent
+              key="all-services-link"
+              distance={140}
+              direction="vertical"
+              duration={0.9}
+              ease="power3.out"
+              initialOpacity={0.15}
+              animateOpacity
+              scale={1.02}
+              threshold={0.15}
+              delay={0.04 * displayedServices.length}
+            >
+              <Link to="/services" className={styles.allServicesCard}>
+                <div className={styles.allServicesContent}>
+                  <div className={styles.allServicesIcon}>→</div>
+                  <h3 className={styles.allServicesTitle}>Все услуги</h3>
+                  <p className={styles.allServicesDescription}>Перейти на страницу со всеми услугами</p>
+                </div>
+              </Link>
+            </AnimatedContent>
+          )}
         </div>
         <AnimatedContent distance={80} direction="horizontal" duration={0.8} ease="power3.out" initialOpacity={0} animateOpacity threshold={0.1}>
           <div className={styles.actions}>

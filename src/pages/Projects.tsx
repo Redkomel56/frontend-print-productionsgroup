@@ -37,6 +37,27 @@ const Projects: React.FC = () => {
     loadProjects();
   }, []);
 
+  // Прокрутка к якорю при загрузке страницы
+  useEffect(() => {
+    if (!loading && window.location.hash) {
+      const hash = window.location.hash.substring(1); // убираем #
+      const element = document.getElementById(hash);
+      if (element) {
+        // Небольшая задержка для завершения рендеринга
+        setTimeout(() => {
+          const headerOffset = 180; // отступ для фиксированного header, чтобы заголовок был виден
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    }
+  }, [loading]);
+
   if (loading) {
     return (
       <div className={styles.projectsPage}>

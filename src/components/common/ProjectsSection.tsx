@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ProjectsSection.module.scss';
 
 interface Project {
@@ -177,6 +178,12 @@ const ProjectsSection: React.FC = () => {
                 <div className={styles.content}>
                   <h3 className={styles.projectTitle}>{project.title}</h3>
                   <p className={styles.description}>{project.short_description}</p>
+                  <Link 
+                    to={`/projects#project-${project.id}`}
+                    className={styles.detailsButton}
+                  >
+                    Подробнее
+                  </Link>
                 </div>
               </div>
             ))}

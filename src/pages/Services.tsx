@@ -107,6 +107,7 @@ const Services: React.FC = () => {
               description={serviceHero.block.description || ''}
               noMargin={true}
               rounded={true}
+              servicesPage={true}
             />
           </Link>
         ))}

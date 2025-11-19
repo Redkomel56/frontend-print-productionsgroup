@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ProjectsCarousel.module.scss';
 
 interface Project {
@@ -116,6 +117,14 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
                   backgroundRepeat: 'no-repeat'
                 }}
               />
+            </div>
+            <div className={styles.cardContent}>
+              <Link 
+                to={`/projects#project-${project.id}`}
+                className={styles.detailsButton}
+              >
+                Подробнее
+              </Link>
             </div>
           </div>
         ))}

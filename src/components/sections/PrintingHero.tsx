@@ -7,7 +7,8 @@ const PrintingHero: React.FC<{
   description: string;
   noMargin?: boolean;
   rounded?: boolean;
-}> = ({ src, title, description, noMargin = false, rounded = false }) => {
+  servicesPage?: boolean;
+}> = ({ src, title, description, noMargin = false, rounded = false, servicesPage = false }) => {
   return (
     <section className={`${styles.printingHero} ${noMargin ? styles.noMargin : ''} ${rounded ? styles.rounded : ''}`}>
       {src && (
@@ -20,7 +21,7 @@ const PrintingHero: React.FC<{
             {description}
           </p>
           <button className={styles.orderButton}>
-            Заказать
+            {servicesPage ? 'Перейти в раздел' : 'Заказать'}
           </button>
         </div>
       </div>

@@ -1,8 +1,11 @@
 .projectBlock {
   margin-bottom: 4rem;
+  scroll-margin-top: 180px; // Отступ для фиксированного header при переходе по якорю, чтобы заголовок был виден
+  overflow: visible; // Позволяем увеличенным карточкам выходить за границы
   
   @media (max-width: 768px) {
     margin-bottom: 3rem;
+    scroll-margin-top: 150px;
   }
 }
 
@@ -44,5 +47,6 @@
 
 .carouselWrapper {
   width: 100%;
+  overflow: visible; // Позволяем увеличенным карточкам выходить за границы
 }
 

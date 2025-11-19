@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useInView } from '../../utils/useInView';
 import AnimatedContent from '../common/AnimatedContent';
+import Modal from '../common/Modal';
+import ContactFormContent from '../common/ContactFormContent';
 import styles from './HeroBanner.module.scss';
 
 const HeroBanner: React.FC = () => {
   const { ref: titleRef, inView: isTitleInView } = useInView({ threshold: 0.5 });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSuccess = () => {
+    // Можно добавить уведомление об успешной отправке
+    setTimeout(() => {
+      handleCloseModal();
+    }, 1000);
+  };
 
   return (
     <section className={styles.heroBanner}>
@@ -57,7 +75,7 @@ const HeroBanner: React.FC = () => {
             delay={0.15}
           >
             <div className={styles.actions}>
-              <button className={styles.primaryButton}>Наши услуги</button>
+              <button className={styles.primaryButton} onClick={handleOpenModal}>Оформить заказ</button>
             </div>
           </AnimatedContent>
         </div>
@@ -87,6 +105,10 @@ const HeroBanner: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} title="Оформить заказ">
+        <ContactFormContent onSuccess={handleFormSuccess} />
+      </Modal>
     </section>
   );
 }; 

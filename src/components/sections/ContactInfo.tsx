@@ -74,8 +74,8 @@ const ContactInfo: React.FC = () => {
             <p className={styles.description}>
               Свяжитесь с нами по любым вопросам через указанные контакты.
             </p>
-            <a href="mailto:info@printproductions.ru" className={styles.contactDetail}>
-              info@printproductions.ru
+            <a href="mailto:info@print-productionsgroup.ru" className={styles.contactDetail}>
+            info@print-productionsgroup.ru
             </a>
           </div>
           
@@ -103,7 +103,7 @@ const ContactInfo: React.FC = () => {
               Приходите к нам для обсуждения ваших проектов.
             </p>
             <a href="#" className={styles.contactDetail}>
-              г. Москва, ул. Примерная, д. 123
+            111123, г. Москва, ул. Плеханова, д. 22, корп. 4, пом. 6, кв. 41
             </a>
           </div>
         </div>

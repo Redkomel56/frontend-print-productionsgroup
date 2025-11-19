@@ -11,7 +11,7 @@ const AboutHero: React.FC = () => {
         <div className={styles.content}>
           <h1 className={styles.title}>О компании</h1>
           <p className={styles.description}>
-            Print Productions Group — это когда печать перестаёт быть просто услугой и превращается в искусство, технологию и эмоцию.
+          Принт Продакшнс Групп — это когда печать перестаёт быть просто услугой и превращается в искусство, технологию и эмоцию.
           </p>
         </div>
       </div>

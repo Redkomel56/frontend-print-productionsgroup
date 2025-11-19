@@ -1,6 +1,5 @@
 .carouselContainer {
   position: relative;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -16,6 +15,14 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  
+  &:hover {
+    transform: scale(1.5);
+    z-index: 10; // Чтобы увеличенная карточка была поверх других
+  }
 }
 
 // Адаптивные ширины карточек
@@ -63,11 +70,6 @@
   justify-content: center;
   color: #666;
   font-size: 1rem;
-  transition: transform 0.3s ease; // Плавная анимация при наведении
-  
-  &:hover {
-    transform: scale(1.05); // Небольшое увеличение при наведении
-  }
 }
 
 .navigation {

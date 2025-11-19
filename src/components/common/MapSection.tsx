@@ -74,8 +74,8 @@ const MapSection: React.FC = () => {
                   <div className={styles.icon}>✉️</div>
                   <div className={styles.details}>
                     <span className={styles.label}>Электронная почта</span>
-                    <a href="mailto:info@print-productiongroup.ru" className={styles.value}>
-                      info@print-productiongroup.ru
+                    <a href="mailto:info@print-productionsgroup.ru" className={styles.value}>
+                    info@print-productionsgroup.ru
                     </a>
                   </div>
                 </div>
