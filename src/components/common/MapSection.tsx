@@ -97,7 +97,7 @@ const MapSection: React.FC = () => {
                   <div className={styles.details}>
                     <span className={styles.label}>Офис</span>
                     <span className={styles.value}>
-                      111123, г. Москва, ул. Плеханова, д. 22, корп. 4, пом. 6, кв. 41
+                    111123, г. Москва, ул. Плеханова, д. 22, корп. 4, пом. 6Н
                     </span>
                   </div>
                 </div>
